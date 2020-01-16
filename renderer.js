@@ -4,3 +4,19 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+
+
+alert("hey")
+
+const electron = require("electron")
+
+const {remote} = electron
+
+function myFunction(){
+	return alert("buuuuuuuu")
+}
+
+
+function createChild(){
+	const win = new remote.BrowserWindow({});
+}

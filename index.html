@@ -2,18 +2,34 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <title>Hello World!</title>
+    <style>
+      body {
+        background-color: linen;
+      }
+
+      h1 {
+        color: maroon;
+      }
+    </style>
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <h1>Hey I'm a parent</h1>
+
     We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>.
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
+    <button onclick="createChild()">Create a child window</button>
+
+    <script>
+      const electron = require("electron")
+      const {remote} = electron;
+
+      function createChild(){
+        return new remote.BrowserWindow({parent: remote.getCurrentWindow(), width: 200, height: 200});
+      }
+
+    </script>
   </body>
 </html>
